@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.ui.home.HomeViewModel" />
+        <variable
+            name="resourceUtils"
+            type="com.example.myapplication.utils.ResourceUtils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".ui.home.HomeFragment">
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text='@string/childs_rewards'
+            android:textSize="@dimen/textSize_h2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:columnCount="2"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_home"
+            app:rowCount="2">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="0"
+                android:visibility="@{viewModel.childList.size()>=1? View.VISIBLE : View.INVISIBLE }">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_small">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:background="@drawable/circle"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/textView500"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout00"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineTop00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineBottom00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineStart00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineEnd00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:clipToOutline="true"
+                            android:scaleType="centerInside"
+                            android:imageResource='@{resourceUtils.getResourceDrawableId(viewModel.childList.size() >= 1? viewModel.childList.get(0).drawableName: "avatar_monster", context)}'
+                            app:layout_constraintBottom_toBottomOf="@id/guidelineBottom00"
+                            app:layout_constraintEnd_toEndOf="@id/guidelineEnd00"
+                            app:layout_constraintStart_toStartOf="@id/guidelineStart00"
+                            app:layout_constraintTop_toTopOf="@id/guidelineTop00"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <TextView
+                            android:id="@+id/textViewPointCard100"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=1? Integer.toString(viewModel.childList.get(0).behaviourPoints): "", default=5}'
+                            android:drawablePadding="@dimen/margin_small"
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_heart_24" />
+
+                        <TextView
+                            android:id="@+id/textViewBehaviourPointCard100"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=1? Integer.toString(viewModel.childList.get(0).dutyPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_baseline_check_24" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView500"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{viewModel.childList.size()>=1? viewModel.childList.get(0).name: "", default="Name"}'
+                        android:textSize="@dimen/textSize_h5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="0"
+                android:visibility="@{viewModel.childList.size()>=2? View.VISIBLE : View.INVISIBLE }"
+                >
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_small">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:background="@drawable/circle"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/textView510"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout10"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineTop10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineBottom10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineStart10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="12dp" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineEnd10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:clipToOutline="true"
+                            android:scaleType="centerInside"
+                            android:imageResource='@{resourceUtils.getResourceDrawableId(viewModel.childList.size() >= 2? viewModel.childList.get(1).drawableName: "avatar_monster", context)}'
+                            app:layout_constraintBottom_toBottomOf="@id/guidelineBottom10"
+                            app:layout_constraintEnd_toEndOf="@id/guidelineEnd10"
+                            app:layout_constraintStart_toStartOf="@id/guidelineStart10"
+                            app:layout_constraintTop_toTopOf="@id/guidelineTop10"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/textViewPointCard110"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=2? Integer.toString(viewModel.childList.get(1).behaviourPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_heart_24" />
+
+                        <TextView
+                            android:id="@+id/textViewBehaviourPointCard110"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=2? Integer.toString(viewModel.childList.get(1).dutyPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_baseline_check_24" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView510"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{viewModel.childList.size()>=2? viewModel.childList.get(1).name: "", default="Name"}'
+                        android:textSize="@dimen/textSize_h5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="1"
+                android:visibility="@{viewModel.childList.size()>=3? View.VISIBLE : View.INVISIBLE }">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_small">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:background="@drawable/circle"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/textView501"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout01"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineTop01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineBottom01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineStart01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineEnd01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:clipToOutline="true"
+                            android:scaleType="centerInside"
+                            android:imageResource='@{resourceUtils.getResourceDrawableId(viewModel.childList.size() >= 3? viewModel.childList.get(2).drawableName: "avatar_monster", context)}'
+                            app:layout_constraintBottom_toBottomOf="@id/guidelineBottom01"
+                            app:layout_constraintEnd_toEndOf="@id/guidelineEnd01"
+                            app:layout_constraintStart_toStartOf="@id/guidelineStart01"
+                            app:layout_constraintTop_toTopOf="@id/guidelineTop01"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <TextView
+                            android:id="@+id/textViewPointCard101"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=3? Integer.toString(viewModel.childList.get(2).behaviourPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_heart_24" />
+
+                        <TextView
+                            android:id="@+id/textViewBehaviourPointCard101"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=3? Integer.toString(viewModel.childList.get(2).dutyPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_baseline_check_24" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView501"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{viewModel.childList.size()>=3? viewModel.childList.get(2).name: "", default="Name"}'
+                        android:textSize="@dimen/textSize_h5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="1"
+                android:visibility="@{viewModel.childList.size()>=4? View.VISIBLE : View.INVISIBLE }">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_small">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:background="@drawable/circle"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/textView511"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout11"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineTop11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineBottom11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineStart11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.1" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineEnd11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.9" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:clipToOutline="true"
+                            android:scaleType="centerInside"
+                            android:imageResource='@{resourceUtils.getResourceDrawableId(viewModel.childList.size() >= 4? viewModel.childList.get(3).drawableName: "avatar_monster", context)}'
+                            app:layout_constraintBottom_toBottomOf="@id/guidelineBottom11"
+                            app:layout_constraintEnd_toEndOf="@id/guidelineEnd11"
+                            app:layout_constraintStart_toStartOf="@id/guidelineStart11"
+                            app:layout_constraintTop_toTopOf="@id/guidelineTop11"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/textViewPointCard111"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=4? Integer.toString(viewModel.childList.get(3).behaviourPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_heart_24" />
+
+                        <TextView
+                            android:id="@+id/textViewBehaviourPointCard111"
+                            android:layout_width="match_parent"
+                            android:drawablePadding="@dimen/margin_small"
+                            android:layout_height="wrap_content"
+                            android:text='@{viewModel.childList.size()>=4? Integer.toString(viewModel.childList.get(3).dutyPoints): "", default=5}'
+                            android:textSize="@dimen/textSize_h5"
+                            app:drawableStartCompat="@drawable/ic_baseline_check_24" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView511"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{viewModel.childList.size()>=4? viewModel.childList.get(3).name: "", default="Name"}'
+                        android:textSize="@dimen/textSize_h5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.gridlayout.widget.GridLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_child"
+            android:onClick="@{() -> viewModel.addNewChild()}"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

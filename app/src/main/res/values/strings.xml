@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Child Duties</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_duties">Duties</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_rewards">Rewards</string>
+    <string name="childs_rewards">Child\'s\nRewards</string>
+    <string name="child_name">Child Name</string>
+    <string name="add_child">ADD CHILD</string>
+    <string name="heart_text">5</string>
+    <string name="check_text">10</string>
+    <string name="name">Name</string>
+    <string name="behaviour">Behaviour</string>
+    <string name="duties">Duties</string>
+    <string name="add">+ ADD</string>
+    <string name="repeat">Repeat</string>
+    <string name="assigned_to">Assigned to:</string>
+    <string name="birthday">Birthday</string>
+    <string name="title_add_new_child">Add New Child</string>
+    <string name="choose_avatar">Choose avatar:</string>
+    <string name="select_birthday">Select Birthday</string>
+</resources>

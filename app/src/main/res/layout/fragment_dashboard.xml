@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/radioGroup"
+        app:columnCount="2"
+        app:rowCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_button_1"
+            app:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/purple_700"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/behaviour_text"
+            android:text="@string/behaviour"
+            android:textSize="@dimen/textSize_h5"
+            android:drawablePadding="@dimen/margin_small"
+            app:drawableEndCompat="@drawable/ic_heart_24"
+            app:layout_gravity="center"
+            app:layout_column="0"
+            app:layout_row="1"
+            app:layout_columnWeight="1"/>
+
+
+        <RadioButton
+            android:id="@+id/radio_button_2"
+            app:layout_column="1"
+            app:layout_row="0"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center"
+            android:buttonTint="@color/purple_700"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            />
+
+        <TextView
+            android:id="@+id/duties_text"
+            android:text="@string/duties"
+            android:textSize="@dimen/textSize_h5"
+            android:drawablePadding="@dimen/margin_small"
+            app:drawableEndCompat="@drawable/ic_baseline_check_circle_outline_24"
+            app:layout_gravity="center"
+            app:layout_column="1"
+            app:layout_row="1"
+            app:layout_columnWeight="1"/>
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextFieldName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:textColorHint="@color/purple_700"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:startIconTint="@color/purple_700"
+        app:startIconDrawable="@drawable/ic_baseline_person_24_purple">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_margin="@dimen/margin_medium"
+            android:textColorHint="@color/purple_700"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextFieldBirth"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/repeat"
+        android:textColorHint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldName"
+        app:startIconTint="@color/purple_700"
+        app:startIconDrawable="@drawable/ic_baseline_calendar_month_24_purple">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/margin_medium"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:text="@string/assigned_to"
+        android:textSize="@dimen/textSize_h5"
+        android:textColor="@color/purple_700"
+        android:layout_marginTop="@dimen/margin_big"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldBirth" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_big"
+        android:layout_marginRight="@dimen/margin_big"
+        app:columnCount="4"
+        app:layout_constraintDimensionRatio="4:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:rowCount="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint00"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/circle"
+            android:layout_margin="@dimen/margin_small"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_gravity="fill"
+            app:layout_row="0">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBottom00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToOutline="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/avatar_monster"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottom00"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd00"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart00"
+                app:layout_constraintTop_toTopOf="@id/guidelineTop00"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint01"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/circle"
+            android:layout_margin="@dimen/margin_small"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_gravity="fill"
+            app:layout_row="0">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBottom01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToOutline="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/avatar_monster"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottom01"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd01"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart01"
+                app:layout_constraintTop_toTopOf="@id/guidelineTop01"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint02"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/circle"
+            app:layout_column="2"
+            android:layout_margin="@dimen/margin_small"
+            app:layout_columnWeight="1"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_gravity="fill"
+            app:layout_row="0">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBottom02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToOutline="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/avatar_monster"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottom02"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd02"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart02"
+                app:layout_constraintTop_toTopOf="@id/guidelineTop02"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint03"
+            android:layout_width="0dp"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_height="0dp"
+            android:background="@drawable/circle"
+            app:layout_column="3"
+            app:layout_columnWeight="1"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_gravity="fill"
+            app:layout_row="0">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBottom03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToOutline="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/avatar_monster"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottom03"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd03"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart03"
+                app:layout_constraintTop_toTopOf="@id/guidelineTop03"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.gridlayout.widget.GridLayout>
+    <Button
+        android:id="@+id/button2"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
