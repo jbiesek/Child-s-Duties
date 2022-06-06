@@ -10,4 +10,5 @@
     <color name="transparent">#00000000</color>
     <color name="background_color">#D6C7F1</color>
     <color name="light_gray">#ffaaaaaa</color>
+    <color name="red">#FF0000</color>
 </resources>

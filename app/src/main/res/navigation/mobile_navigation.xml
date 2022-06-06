@@ -31,4 +31,32 @@
         android:name="com.example.myapplication.ui.home.ChildAddEditFragment"
         android:label="@string/title_add_new_child"
         tools:layout="@layout/fragment_child_add_edit" />
+
+    <fragment
+        android:id="@+id/navigation_rewards"
+        android:name="com.example.myapplication.ui.reward.RewardsFragment"
+        android:label="@string/title_rewards"
+        tools:layout="@layout/fragment_rewards">
+        <action
+            android:id="@+id/action_navigation_rewards_to_rewardAddEditFragment"
+            app:destination="@id/rewardAddEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/rewardAddEditFragment"
+        android:name="com.example.myapplication.ui.reward.RewardAddEditFragment"
+        android:label="RewardAddEditFragment"
+        tools:layout="@layout/fragment_reward_add_edit">
+        <action
+            android:id="@+id/action_rewardAddEditFragment_to_navigation_rewards"
+            app:destination="@id/navigation_rewards"
+            app:popUpTo="@id/navigation_rewards"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="rewardId"
+            android:defaultValue="0L"
+            app:argType="long" />
+    </fragment>
+
 </navigation>

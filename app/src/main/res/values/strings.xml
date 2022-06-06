@@ -20,4 +20,14 @@
     <string name="title_add_new_child">Add New Child</string>
     <string name="choose_avatar">Choose avatar:</string>
     <string name="select_birthday">Select Birthday</string>
+    <string name="assign_to">Assign to:</string>
+    <string name="add_reward">ADD REWARD</string>
+    <string name="are_you_sure_delete_reward">Are you sure you want to delete reward?</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="reward_name">Reward Name</string>
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="assign_to_child">Assign to:</string>
 </resources>

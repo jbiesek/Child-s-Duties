@@ -3,6 +3,7 @@ package com.example.myapplication.data.core
 import android.content.Context
 import androidx.room.Room
 import com.example.myapplication.data.ChildDao
+import com.example.myapplication.data.RewardDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +29,9 @@ class AppModule {
     @Provides
     @Singleton
     fun provideChildDao(database: AppDatabase): ChildDao = database.childDao()
+
+    @Provides
+    @Singleton
+    fun provideRewardDao(database: AppDatabase): RewardDao = database.rewardDao()
 
 }
